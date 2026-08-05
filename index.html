@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Hardware &amp; Performance Analyzer — Vijay Bhaskar Reddy</title>
+  <meta name="description" content="Intelligent hardware recommendation &amp; performance analysis engine. Rule-based precision, automated workload profiling, and TDP analytics." />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Orbitron:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"><div class="scroll-progress-fill" id="scrollProgressFill"></div></div>
+
+  <!-- 3D Particle Canvas Matrix -->
+  <canvas id="particleCanvas" class="particle-canvas"></canvas>
+
+  <!-- FLOATING PILL NAVIGATION -->
+  <header class="pill-nav" id="siteHeader" aria-label="Primary navigation">
+    <div class="pill pill-logo">
+      <svg viewBox="0 0 256 256" class="pill-logo-icon" fill="none" aria-hidden="true">
+        <path d="M128 192L128 256L64.5 256L32 223L0 192L0 128L64 128Z" fill="#4ab5e0"/>
+        <path d="M256 192L256 256L192.5 256L160 223L128 192L128 128L192 128Z" fill="#4ab5e0" opacity="0.7"/>
+        <path d="M128 64L128 128L64.5 128L32 95L0 64L0 0L64 0Z" fill="#4ab5e0" opacity="0.9"/>
+        <path d="M256 64L256 128L192.5 128L160 95L128 64L128 0L192 0Z" fill="#4ab5e0" opacity="0.5"/>
+      </svg>
+      <span class="pill-brand"><span class="pill-author">Vijay Bhaskar Reddy</span></span>
+    </div>
+    <nav class="pill pill-nav-links" aria-label="Main sections">
+      <a href="#cinema" class="pnl active" data-section="cinema">overview</a>
+      <a href="#specs" class="pnl" data-section="specs">specs</a>
+      <a href="#builder" class="pnl" data-section="builder">builder</a>
+      <a href="#rules" class="pnl" data-section="rules">recommend</a>
+      <a href="#performance" class="pnl" data-section="performance">report</a>
+    </nav>
+    <div class="pill pill-actions">
+      <button class="pill-theme-btn" id="themeToggleBtn" aria-label="Switch theme">
+        <span id="systemModeLabel">v1.0 Cyan</span>
+        <span aria-hidden="true" class="pill-chevron">&#8964;</span>
+      </button>
+      <button class="pill-hide-btn" id="hideHeaderBtn" title="Hide navigation">&#128065;</button>
+    </div>
+  </header>
+
+  <button class="show-header-btn" id="showHeaderBtn" title="Show navigation" aria-label="Show navigation bar">
+    <span>show nav</span>
+  </button>
+
+  <main class="site-shell">
+
+    <!-- Hero Section -->
+    <section class="page-section hero-section" id="cinema" aria-label="Overview and Hero">
+      <video class="hero-bg-video" autoplay loop muted playsinline
+        src="https://videos.pexels.com/video-files/3129957/3129957-hd_1920_1080_25fps.mp4">
+      </video>
+      <div class="hero-bg-img-fallback">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2000&q=80" alt="Server rack background" />
+      </div>
+      <div class="hero-overlay"></div>
+
+      <h1 class="hero-word hero-word--1">optimize</h1>
+      <p class="hero-word hero-word--2">your</p>
+      <p class="hero-word hero-word--3">hardware</p>
+
+      <p class="hero-desc">
+        an intelligent decision matrix, automated workload profiling, and
+        power analytics engine built to eliminate hardware bottlenecks.
+      </p>
+      <div class="hero-tags">
+        <span>Workload Profiling</span>
+        <span>TDP Analytics</span>
+        <span>Rule-Based Engine</span>
+      </div>
+
+      <div class="hero-stat hero-stat--tr">
+        <div class="hero-stat-row">
+          <span class="hero-stat-divider hero-stat-divider--left"></span>
+          <span class="hero-stat-num">+100%</span>
+        </div>
+        <span class="hero-stat-label">rule-based precision</span>
+      </div>
+
+      <div class="hero-stat hero-stat--br">
+        <div class="hero-stat-row hero-stat-row--right">
+          <span class="hero-stat-divider hero-stat-divider--left"></span>
+          <span class="hero-stat-num">7</span>
+        </div>
+        <span class="hero-stat-label hero-stat-label--right">components analyzed</span>
+      </div>
+
+      <div class="hero-bottom-fade"></div>
+      <div class="scroll-cue" aria-hidden="true">
+        <span>scroll</span>
+        <div class="scroll-cue-line"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SPECS SLIDER (7 modules) -->
+    <section class="page-section specs-section" id="specs" aria-label="System Specifications">
+      <div class="section-badge-center">SYSTEM SPECIFICATIONS &amp; MODULES</div>
+      <div class="sights-slider">
+        <div class="sights-track" id="sightsTrack">
+
+          <article class="sight-card tilt-card reveal-on-scroll" tabindex="0" data-index="0">
+            <div class="card-pin">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/>
+                <path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 15h2M2 9h2M20 15h2M20 9h2"/>
+              </svg>
+            </div>
+            <span class="card-kicker">Specs 01 | Processor</span>
+            <h3>CPU Architecture &amp; Cores</h3>
+            <p>Optimal core counts, clock speeds, L3 cache sizing, and AVX-512 instructions calculated for high-parallel workloads.</p>
+          </article>
+
+          <article class="sight-card tilt-card reveal-on-scroll" tabindex="0" data-index="1">
+            <div class="card-pin">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="12" r="3"/><circle cx="16" cy="12" r="3"/><path d="M6 18v2M18 18v2"/>
+              </svg>
+            </div>
+            <span class="card-kicker">Specs 02 | Graphics</span>
+            <h3>GPU &amp; VRAM Bottlenecking</h3>
+            <p>Rule-based mapping for VRAM buffer requirements, CUDA/Tensor core scaling, and ray-tracing pipeline stability.</p>
+          </article>
+
+          <article class="sight-card tilt-card reveal-on-scroll" tabindex="0" data-index="2">
+            <div class="card-pin">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 19v-3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v3"/><path d="M6 5v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5"/>
+                <rect x="2" y="9" width="20" height="6" rx="1"/><circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/>
+              </svg>
+            </div>
+            <span class="card-kicker">Specs 03 | Memory &amp; NVMe</span>
+            <h3>RAM Bandwidth &amp; Speed</h3>
+            <p>Calculates dual-channel DDR5 bus bandwidth, NVMe Gen5 throughput, and random I/O latency targets.</p>
+          </article>
+
+          <article class="sight-card tilt-card reveal-on-scroll" tabindex="0" data-index="3">
+            <div class="card-pin">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <span class="card-kicker">Specs 04 | Power &amp; Thermal</span>
+            <h3>TDP Wattage &amp; Thermals</h3>
+            <p>Real-time estimation of total system power draw, transient spike margins, liquid cooling radiator sizing, and fan noise profiles.</p>
+          </article>
+
+          <article class="sight-card tilt-card reveal-on-scroll" tabindex="0" data-index="4">
+            <div class="card-pin">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+              </svg>
+            </div>
+            <span class="card-kicker">Specs 05 | Motherboard</span>
+            <h3>Chipset &amp; PCIe Lanes</h3>
+            <p>VRM phase count, PCIe 5.0 lane allocation, M.2 slot mapping, and XMP/EXPO memory OC compatibility matrix.</p>
+          </article>
+
+          <article class="sight-card tilt-card reveal-on-scroll" tabindex="0" data-index="5">
+            <div class="card-pin">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/>
+                <path d="M6 6h.01M6 18h.01"/>
+              </svg>
+            </div>
+            <span class="card-kicker">Specs 06 | Chassis</span>
+            <h3>Case Airflow &amp; Form Factor</h3>
+            <p>Radiator clearance, 180mm front intake fan sizing, cable routing, and positive pressure airflow optimization.</p>
+          </article>
+
+          <article class="sight-card tilt-card reveal-on-scroll" tabindex="0" data-index="6">
+            <div class="card-pin">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </div>
+            <span class="card-kicker">Specs 07 | Analytics</span>
+            <h3>Automated Hardware Export</h3>
+            <p>Algorithmic calculation of benchmark metrics, compatibility matrices, and detailed downloadable hardware diagnostic reports.</p>
+          </article>
+
+        </div>
+      </div>
+      <div class="sights-controls" aria-label="Slider controls">
+        <button class="sight-nav sight-prev" id="sightPrevBtn" aria-label="Previous">&#8592;</button>
+        <button class="sight-nav sight-next" id="sightNextBtn" aria-label="Next">&#8594;</button>
+      </div>
+    </section>
+
+    <!-- SECTION 3: PC BUILDER MATRIX -->
+    <section class="page-section" id="builder" aria-label="User Requirement and PC Builder Matrix">
+      <div class="story-panel builder-panel reveal-zoom-in">
+        <div class="panel-header">
+          <span class="panel-kicker">3. Interactive Requirement Matrix</span>
+          <h2>Configure Your Target Workload &amp; Upgrades</h2>
+          <p>Select environment, intended usage, and budget. Tweak live sliders to inspect upgrade scaling like a custom PC builder.</p>
+        </div>
+        <div class="builder-grid">
+          <div class="builder-inputs reveal-fade-left">
+            <div class="form-group">
+              <label for="envSelect">Environment Type</label>
+              <div class="builder-select-wrapper">
+                <select class="builder-select" id="envSelect" aria-label="Select Environment Type">
+                  <option value="basic" selected>Basic Home / Student PC (Entry)</option>
+                  <option value="entry_office">Entry Office &amp; POS Kiosk</option>
+                  <option value="media">Home Media HTPC / NAS Server</option>
+                  <option value="home">Home / Gaming Den</option>
+                  <option value="office">Office &amp; CAD Workstation</option>
+                  <option value="studio">Studio &amp; Production</option>
+                  <option value="esports">eSports Arena &amp; LAN Rig</option>
+                  <option value="edge">Edge AI &amp; Mobile Lab</option>
+                  <option value="cloud">Cloud Native &amp; Server Host</option>
+                  <option value="research">HPC Supercomputer Cluster</option>
+                  <option value="datacenter">Rack Data Center</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="useSelect">Target Primary Use</label>
+              <div class="builder-select-wrapper">
+                <select class="builder-select" id="useSelect" aria-label="Select Target Primary Use">
+                  <option value="basic_web" selected>Basic Web Browsing &amp; Online Classes</option>
+                  <option value="office_docs">Office Documents &amp; Accounting</option>
+                  <option value="media_playback">4K Media Playback &amp; HTPC Streaming</option>
+                  <option value="gaming">4K Ray-Tracing Gaming</option>
+                  <option value="ai">AI / LLM Model Training</option>
+                  <option value="rendering">3D Motion &amp; VFX Rendering</option>
+                  <option value="dev">Software &amp; VM Engineering</option>
+                  <option value="streaming">8K VR &amp; Live Streaming</option>
+                  <option value="cad">Mechanical CAD &amp; CFD</option>
+                  <option value="crypto">High-Frequency Trading</option>
+                  <option value="bio">Bioinformatics &amp; Simulation</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Target Budget Bracket</label>
+              <div class="budget-slider-box">
+                <input type="range" id="budgetRange" min="15000" max="500000" step="5000" value="25000" />
+                <div class="budget-val-display">Budget: <span id="budgetValue">₹25,000</span></div>
+              </div>
+            </div>
+            <div class="upgrade-sliders">
+              <h4>Dynamic Hardware Upgrade Sliders</h4>
+              <div class="slider-control">
+                <div class="slider-label"><span>RAM Capacity:</span> <strong id="ramSliderVal">4 GB DDR4</strong></div>
+                <input type="range" id="ramUpgradeSlider" min="4" max="128" step="4" value="4" />
+              </div>
+              <div class="slider-control">
+                <div class="slider-label"><span>Storage Speed &amp; Capacity:</span> <strong id="storageSliderVal">256 GB NVMe SSD</strong></div>
+                <input type="range" id="storageUpgradeSlider" min="1" max="6" step="1" value="1" />
+              </div>
+              <div class="slider-control">
+                <div class="slider-label"><span>GPU Compute Tier:</span> <strong id="gpuSliderVal">Integrated Graphics (iGPU)</strong></div>
+                <input type="range" id="gpuUpgradeSlider" min="0" max="4" step="1" value="0" />
+              </div>
+            </div>
+          </div>
+          <div class="builder-outputs reveal-fade-right">
+            <div class="analytics-card tilt-card">
+              <h4>PC Builder Real-Time Specifications</h4>
+              <div class="builder-spec-summary">
+                <div class="spec-row"><span>Estimated Power Draw (TDP):</span> <strong id="outTdp">680 Watts</strong></div>
+                <div class="spec-row"><span>Recommended PSU Wattage:</span> <strong id="outPsu">850W 80+ Gold</strong></div>
+                <div class="spec-row"><span>Memory Bandwidth:</span> <strong id="outRamBandwidth">96.0 GB/s (Dual Channel)</strong></div>
+                <div class="spec-row"><span>Storage Throughput:</span> <strong id="outStorageSpeed">7,400 MB/s NVMe Read</strong></div>
+                <div class="spec-row"><span>Thermal / Fan Noise:</span> <strong id="outNoise">32 dB (Whisper Quiet)</strong></div>
+                <div class="spec-row"><span>Bottleneck Ratio:</span> <strong id="outBottleneck">2.4% (Optimal Balance)</strong></div>
+                <div class="spec-row"><span>Est. Total Build Cost:</span> <strong id="outTotalPrice" class="text-glow-cyan">₹1,84,930</strong></div>
+              </div>
+              <div class="performance-gauges">
+                <div class="gauge-item">
+                  <span class="gauge-name">4K Gaming FPS</span>
+                  <div class="gauge-bar"><div class="gauge-fill" id="gaugeFps" style="width:88%"></div></div>
+                  <span class="gauge-num" id="numFps">135 FPS</span>
+                </div>
+                <div class="gauge-item">
+                  <span class="gauge-name">AI Token Rate</span>
+                  <div class="gauge-bar"><div class="gauge-fill" id="gaugeTokens" style="width:75%"></div></div>
+                  <span class="gauge-num" id="numTokens">48 tok/s</span>
+                </div>
+                <div class="gauge-item">
+                  <span class="gauge-name">3D Render Speed</span>
+                  <div class="gauge-bar"><div class="gauge-fill" id="gaugeRender" style="width:92%"></div></div>
+                  <span class="gauge-num" id="numRender">9.2x Speed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: 7-COMPONENT RECOMMENDATION GALLERY -->
+    <section class="page-section" id="rules" aria-label="Recommended Specs and Hardware Gallery">
+      <div class="story-panel recommendation-panel reveal-flip-x">
+        <div class="panel-header">
+          <span class="panel-kicker">4. Optimal Build Recommendation</span>
+          <h2>Recommended Hardware &amp; Component Gallery</h2>
+          <p>Based on your selected workload matrix and slider preferences, here are the non-bottlenecked component recommendations from our CSV hardware database.</p>
+        </div>
+        <div class="parts-grid" id="partsGrid">
+
+          <article class="part-card tilt-card reveal-on-scroll">
+            <div class="part-img-box">
+              <img src="assets/cpu.png" alt="CPU Processor" id="partImgCpu" />
+              <span class="part-badge" id="partBadgeCpu">Flagship CPU</span>
+            </div>
+            <div class="part-details">
+              <div class="part-type-row">
+                <span class="part-type">Processor Model</span>
+                <span class="part-select-label">Select CPU:</span>
+              </div>
+              <div class="part-select-wrapper">
+                <select class="part-select" id="cpuSelect" aria-label="Select Processor Model"></select>
+              </div>
+              <h4 id="partNameCpu">Intel Core i9-14900K</h4>
+              <p id="partDescCpu">24 Cores (8P + 16E) / 32 Threads up to 6.0 GHz Turbo</p>
+              <div class="part-stat"><span id="partStatLabelCpu">Power Draw:</span> <strong id="partStatCpu">253W TDP</strong></div>
+              <div class="part-price-tag" id="partPriceCpu">₹53,990</div>
+            </div>
+          </article>
+
+          <article class="part-card tilt-card reveal-on-scroll">
+            <div class="part-img-box">
+              <img src="assets/gpu.png" alt="Graphics Card" id="partImgGpu" />
+              <span class="part-badge" id="partBadgeGpu">Ray Tracing Champion</span>
+            </div>
+            <div class="part-details">
+              <span class="part-type">Graphics Acceleration</span>
+              <h4 id="partNameGpu">NVIDIA GeForce RTX 4080 Super</h4>
+              <p id="partDescGpu">16GB GDDR6X VRAM with DLSS 3.5 &amp; Frame Gen</p>
+              <div class="part-stat"><span id="partStatLabelGpu">CUDA Cores:</span> <strong id="partStatGpu">10,240 Cores</strong></div>
+              <div class="part-price-tag" id="partPriceGpu">₹99,990</div>
+            </div>
+          </article>
+
+          <article class="part-card tilt-card reveal-on-scroll">
+            <div class="part-img-box">
+              <img src="assets/mobo.png" alt="Motherboard" id="partImgMobo" />
+              <span class="part-badge" id="partBadgeMobo">Overclocking Beast</span>
+            </div>
+            <div class="part-details">
+              <span class="part-type">Motherboard</span>
+              <h4 id="partNameMobo">ASUS ROG Strix Z790-E</h4>
+              <p id="partDescMobo">LGA1700 DDR5 PCIe 5.0 USB4 Thunderbolt 4</p>
+              <div class="part-stat"><span id="partStatLabelMobo">VRM Phases:</span> <strong id="partStatMobo">20+2 Phases</strong></div>
+              <div class="part-price-tag" id="partPriceMobo">₹44,990</div>
+            </div>
+          </article>
+
+          <article class="part-card tilt-card reveal-on-scroll">
+            <div class="part-img-box">
+              <img src="assets/ram.png" alt="RAM Memory" id="partImgRam" />
+              <span class="part-badge" id="partBadgeRam">Low Latency</span>
+            </div>
+            <div class="part-details">
+              <span class="part-type">System Memory</span>
+              <h4 id="partNameRam">32GB DDR5-6000MHz</h4>
+              <p id="partDescRam">Dual-Channel Kit with XMP 3.0 &amp; RGB Heatspreaders</p>
+              <div class="part-stat"><span id="partStatLabelRam">Latency:</span> <strong id="partStatRam">CL30-36-36-76</strong></div>
+              <div class="part-price-tag" id="partPriceRam">₹10,490</div>
+            </div>
+          </article>
+
+          <article class="part-card tilt-card reveal-on-scroll">
+            <div class="part-img-box">
+              <img src="assets/storage.png" alt="NVMe Storage" id="partImgStorage" />
+              <span class="part-badge" id="partBadgeStorage">PCIe Gen4 NVMe</span>
+            </div>
+            <div class="part-details">
+              <span class="part-type">High-Speed Storage</span>
+              <h4 id="partNameStorage">2TB NVMe M.2 SSD</h4>
+              <p id="partDescStorage">7,400 MB/s Sequential Read &amp; 6,800 MB/s Write</p>
+              <div class="part-stat"><span id="partStatLabelStorage">Endurance:</span> <strong id="partStatStorage">1,200 TBW</strong></div>
+              <div class="part-price-tag" id="partPriceStorage">₹16,990</div>
+            </div>
+          </article>
+
+          <article class="part-card tilt-card reveal-on-scroll">
+            <div class="part-img-box">
+              <img src="assets/case.png" alt="PC Case" id="partImgCase" />
+              <span class="part-badge" id="partBadgeCase">Airflow King</span>
+            </div>
+            <div class="part-details">
+              <span class="part-type">Chassis / Case</span>
+              <h4 id="partNameCase">Lian Li O11 Dynamic EVO XL</h4>
+              <p id="partDescCase">Full-Tower EATX Triple Chamber RGB Tempered Glass</p>
+              <div class="part-stat"><span id="partStatLabelCase">Airflow:</span> <strong id="partStatCase">High CFM Mesh</strong></div>
+              <div class="part-price-tag" id="partPriceCase">₹21,990</div>
+            </div>
+          </article>
+
+          <article class="part-card tilt-card reveal-on-scroll">
+            <div class="part-img-box">
+              <img src="assets/psu.png" alt="Power Supply Unit" id="partImgPsu" />
+              <span class="part-badge" id="partBadgePsu">80+ Platinum</span>
+            </div>
+            <div class="part-details">
+              <span class="part-type">Power &amp; Cooling</span>
+              <h4 id="partNamePsu">Corsair HX1000 80+ Platinum</h4>
+              <p id="partDescPsu">Fully Modular Native PCIe 5.0 12VHPWR &amp; 360mm AIO</p>
+              <div class="part-stat"><span id="partStatLabelPsu">Efficiency:</span> <strong id="partStatPsu">92% Platinum Rated</strong></div>
+              <div class="part-price-tag" id="partPricePsu">₹19,990</div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: ANALYTICS & REPORT -->
+    <section class="page-section" id="performance" aria-label="Performance and Diagnostics Report">
+      <div class="story-panel reveal-on-scroll">
+        <div class="panel-header">
+          <span class="panel-kicker">5. Performance &amp; Diagnostic System</span>
+          <h2>Generate Final Diagnostic Hardware Report</h2>
+          <p>Provides execution time estimates, TDP calculations, and architecture evaluation scores in downloadable summaries across all 7 components.</p>
+        </div>
+        <dl class="facts">
+          <dt>100%</dt><dd>Rule-based automated hardware mapping</dd>
+          <dt>7 Modules</dt><dd>Requirement profiling to full export</dd>
+          <dt>5 Profiles</dt><dd>Workload environments supported</dd>
+        </dl>
+        <div style="margin-top: 2rem;">
+          <button class="report-btn glow-btn-3d" id="openReportModalBtn">
+            <span>&#8599;</span>
+            <span>Generate Diagnostic Report</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- DIAGNOSTIC REPORT MODAL -->
+  <div class="modal-overlay" id="reportModal" aria-hidden="true">
+    <div class="modal-card tilt-card">
+      <header class="modal-header">
+        <div>
+          <span class="modal-badge">Vijay Bhaskar Reddy</span>
+          <h3>Hardware Performance Diagnostic Summary</h3>
+        </div>
+        <button class="modal-close" id="closeReportModalBtn" aria-label="Close modal">&times;</button>
+      </header>
+      <div class="modal-body">
+        <div class="sim-controls">
+          <div class="sim-field">
+            <label for="workloadSelect">Workload Profile</label>
+            <select id="workloadSelect">
+              <option value="gaming">Ultra Gaming &amp; Ray Tracing</option>
+              <option value="ai">AI / Deep Learning &amp; LLMs</option>
+              <option value="rendering">3D Rendering &amp; Video Editing</option>
+              <option value="office">Engineering &amp; CAD Workstations</option>
+            </select>
+          </div>
+          <div class="sim-field">
+            <label for="budgetSelect">Target Budget Tier</label>
+            <select id="budgetSelect">
+              <option value="mid">Mid-Range ($1,200 &#8211; $1,800)</option>
+              <option value="high" selected>High Performance ($2,000 &#8211; $3,500)</option>
+              <option value="enthusiast">Enthusiast / Studio ($4,000+)</option>
+            </select>
+          </div>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-box"><span class="metric-label">Calculated Total TDP</span><span class="metric-val" id="metricTdp">650 W</span></div>
+          <div class="metric-box"><span class="metric-label">Bottleneck Ratio</span><span class="metric-val" id="metricBottleneck">3.2% (Optimal)</span></div>
+          <div class="metric-box"><span class="metric-label">Score / Efficiency</span><span class="metric-val" id="metricScore">96 / 100</span></div>
+        </div>
+        <div class="report-preview">
+          <h4>Recommendation Matrix Output &#8212; All 7 Components</h4>
+          <ul class="spec-list" id="specList">
+            <li><strong>CPU:</strong> Intel Core i9-14900K (24 Cores / 32 Threads, up to 6.0GHz)</li>
+            <li><strong>GPU:</strong> NVIDIA GeForce RTX 4080 Super (16GB GDDR6X)</li>
+            <li><strong>Motherboard:</strong> ASUS ROG Strix Z790-E Gaming WiFi</li>
+            <li><strong>RAM:</strong> 32GB DDR5-6000MHz Dual-Channel</li>
+            <li><strong>Storage:</strong> 2TB NVMe PCIe Gen4 SSD (7400 MB/s Read)</li>
+            <li><strong>Case:</strong> Lian Li O11 Dynamic EVO XL</li>
+            <li><strong>PSU &amp; Thermal:</strong> Corsair HX1000 80+ Platinum + 360mm AIO</li>
+          </ul>
+        </div>
+      </div>
+      <footer class="modal-footer">
+        <button class="report-btn download-btn" id="downloadReportBtn">
+          <span>&#8595;</span>
+          <span>Download Full Diagnostic Report (.pdf)</span>
+        </button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
