@@ -242,6 +242,40 @@ ul, ol { list-style: none; }
 /* Actions pill */
 .pill-actions { gap: 0.5rem; padding: 0.35rem 0.6rem; }
 
+.pill-backend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.75rem;
+  background: rgba(74, 181, 224, 0.12);
+  border: 1px solid rgba(74, 181, 224, 0.35);
+  border-radius: 9999px;
+  color: var(--cyan-bright);
+  transition: all 0.3s ease;
+  user-select: none;
+}
+.pill-backend-badge.connected {
+  background: rgba(57, 255, 20, 0.12);
+  border-color: rgba(57, 255, 20, 0.4);
+  color: #39ff14;
+}
+.pill-backend-badge.offline {
+  background: rgba(255, 75, 75, 0.12);
+  border-color: rgba(255, 75, 75, 0.4);
+  color: #ff4b4b;
+}
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  animation: badgePulse 2s infinite ease-in-out;
+}
+
 .pill-theme-btn {
   font-family: var(--font-mono);
   font-size: 0.75rem;

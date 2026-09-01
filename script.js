@@ -116,19 +116,59 @@
   ];
 
   /* ---------------------------------------------------------- */
-  /* 2. CSV FETCH & PARSER                                      */
+  /* 2. JAVA REST API / CSV FETCH & PARSER                      */
   /* ---------------------------------------------------------- */
+  let isJavaBackendActive = false;
+
+  async function updateBackendStatus(active, msg) {
+    const badge = document.getElementById('backendBadge');
+    const statusText = document.getElementById('backendStatusText');
+    if (!badge) return;
+    if (active) {
+      badge.classList.add('connected');
+      badge.classList.remove('offline');
+      if (statusText) statusText.textContent = msg || 'Java Backend';
+      badge.title = 'Connected to Java Full-Stack REST Server on port 8080';
+    } else {
+      badge.classList.remove('connected');
+      badge.classList.add('offline');
+      if (statusText) statusText.textContent = msg || 'Client Mode';
+      badge.title = 'Operating in client-side mode (Run run.bat to start Java server)';
+    }
+  }
+
   async function loadHardwareDatabase() {
+    // 1. Try Java REST API
+    try {
+      const apiRes = await fetch('/api/hardware', { cache: 'no-cache' });
+      if (apiRes.ok) {
+        const data = await apiRes.json();
+        if (Array.isArray(data) && data.length > 0) {
+          hardwareDatabase = data;
+          isJavaBackendActive = true;
+          console.log('[JAVA-API] Connected! Loaded', data.length, 'components from Java Backend');
+          updateBackendStatus(true, 'Java Active');
+          recalculatePCBuilder();
+          return;
+        }
+      }
+    } catch (apiErr) {
+      console.log('[JAVA-API] Java backend not responding on current port, trying local CSV/fallback...');
+    }
+
+    // 2. Try CSV fetch fallback
     try {
       const res = await fetch('hardware_data.csv');
       if (!res.ok) throw new Error('CSV fetch failed: ' + res.status);
       const text = await res.text();
       hardwareDatabase = parseCSV(text);
       console.log('[HW-DB] Loaded', hardwareDatabase.length, 'components from hardware_data.csv');
+      updateBackendStatus(false, 'Local CSV');
       recalculatePCBuilder();
     } catch (err) {
-      console.warn('[HW-DB] Could not load CSV, using fallback static data.', err.message);
+      console.warn('[HW-DB] Using built-in fallback static dataset.', err.message);
       hardwareDatabase = fallbackHardwareDatabase;
+      updateBackendStatus(false, 'Client Mode');
       recalculatePCBuilder();
     }
   }
